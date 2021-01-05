@@ -1,0 +1,817 @@
+:root {
+  --color-link: #008cfc;
+  --color-alt-link: #f9826c;
+  --color-header: #161b22;
+  --color-prime: #24292e;
+  --color-main-canvas: #f6f8fa;
+  --color-alt-canvas: #eaeaea;
+}
+
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.App {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  min-height: 100%;
+  color: var(--color-prime);
+  background-color: var(--color-main-canvas);
+}
+
+.App .Navbar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: fixed;
+  z-index: 2;
+  margin-bottom: 15vh;
+  width: 100%;
+  height: 10vh;
+  min-height: 68px;
+  background-color: var(--color-header);
+}
+
+.App .Navbar #logo,
+.App .Navbar .ThemeSwitch,
+.App .Navbar .SearchBar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
+}
+
+.App .Navbar #logo {
+  width: 20%;
+  height: 100%;
+  font-size: 1.5vmin;
+}
+
+.App .Navbar #logo #logo-link {
+  color: #c9d1d9;
+}
+
+.App .Navbar #logo #logo-link:hover {
+  color: silver !important;
+}
+
+.App .Navbar .ThemeSwitch {
+  width: 20%;
+  z-index: 3;
+}
+
+.App .Navbar .SearchBar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
+  width: 60%;
+  z-index: 100;
+  position: relative;
+}
+
+.App .Navbar .SearchBar .search-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 80%;
+}
+
+.App .Navbar .SearchBar .search-form #search-input {
+  width: calc(100% - 65px);
+  font-size: 2rem;
+  background-color: var(--color-main-canvas);
+  color: var(--color-prime);
+  outline: none;
+  border: 0.1px solid #646464;
+  border-bottom: 2px solid var(--color-prime);
+  border-radius: 1rem 0 0 0;
+  -webkit-transition: 0.25s cubic-bezier(0.95, 0.05, 0.795, 0.035);
+  transition: 0.25s cubic-bezier(0.95, 0.05, 0.795, 0.035);
+}
+
+.App .Navbar .SearchBar .search-form #submit {
+  width: 65px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  background-color: var(--color-alt-canvas);
+  outline: none;
+  border: none;
+  border-radius: 0 1rem 0 0;
+  border: 0.1px solid #646464;
+  border-bottom: 2px solid var(--color-prime);
+}
+
+.App .Navbar .SearchBar .search-form #submit #search-icon {
+  color: var(--color-prime);
+}
+
+.App .Navbar .SearchBar .search-form #submit #search-icon:hover {
+  color: #979797;
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+}
+
+.App .Navbar .SearchBar .search-results {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  left: 10%;
+  top: 100%;
+  width: 80%;
+  background-color: var(--color-main-canvas);
+  border: 0.5px solid var(--color-prime);
+  border-top: 0;
+  list-style-type: none;
+}
+
+.App .Navbar .SearchBar .search-results .suggestions,
+.App .Navbar .SearchBar .search-results .recent-visits {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  text-align: center;
+}
+
+.App .Navbar .SearchBar .search-results .result-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  height: 10vh;
+}
+
+.App .Navbar .SearchBar .search-results .suggestion,
+.App .Navbar .SearchBar .search-results .visited {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  margin: 0.25rem;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  color: var(--color-prime);
+  text-decoration: none;
+}
+
+.App .Navbar .SearchBar .search-results .suggestion:hover,
+.App .Navbar .SearchBar .search-results .visited:hover {
+  background-color: rgba(50, 50, 50, 0.5);
+}
+
+.App .Navbar .SearchBar .search-results .suggestion:focus,
+.App .Navbar .SearchBar .search-results .visited:focus {
+  background-color: rgba(50, 50, 50, 0.5);
+}
+
+.App .Navbar .SearchBar .search-results .result-link {
+  width: 100%;
+  height: 100%;
+}
+
+.App .Navbar .SearchBar .search-results .suggestion-name {
+  margin-left: 1rem;
+}
+
+.App .Landing {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 15vh;
+  max-width: 1000px;
+}
+
+.App .Landing .Panel {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  width: 100%;
+  height: 50px;
+  background-color: var(--color-header);
+  border-radius: 1rem 1rem 0 0;
+  padding: 0 1.5vmin;
+  margin: 1.5vmin 0;
+}
+
+.App .Landing .Panel .sort-options,
+.App .Landing .Panel .view-options {
+  width: 50%;
+}
+
+.App .Landing .Panel .sortButton,
+.App .Landing .Panel .viewButton {
+  height: 100%;
+  font-size: 1.25rem;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  color: #c9d1d9;
+}
+
+.App .Landing .Panel .sortButton:hover,
+.App .Landing .Panel .viewButton:hover {
+  cursor: pointer;
+  color: #9ca0a5;
+}
+
+.App .Landing .Panel .sortButton {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 5px;
+}
+
+.App .Landing .Panel .sortButton .sort-by {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-right: 0.25rem;
+}
+
+.App .Landing .Panel .sortButton #sort-arrow {
+  margin: 0 5px;
+  -webkit-transition: -webkit-transform 1s;
+  transition: -webkit-transform 1s;
+  transition: transform 1s;
+  transition: transform 1s, -webkit-transform 1s;
+  font-size: 1rem;
+}
+
+.App .Landing .Panel #cover {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.App .Landing .Panel #cover .options {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  margin: 0;
+  padding: 1vmin;
+  margin-top: 50vh;
+  width: 100vw;
+  height: 50vh;
+  overflow: scroll;
+  background-color: var(--color-alt-canvas);
+  color: var(--color-prime);
+  border-radius: 1rem 1rem 0 0;
+  text-align: center;
+}
+
+.App .Landing .Panel #cover .options .options-title {
+  list-style: none;
+  font-size: 4vmin;
+}
+
+.App .Landing .Panel #cover .options .option {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  list-style: none;
+  height: calc(100% / 6);
+  font-size: 4vmin;
+  background-color: var(--color-main-canvas);
+}
+
+.App .Landing .Panel #cover .options .option {
+  width: 50%;
+  border-radius: 1rem;
+  border: 2px solid black;
+}
+
+.App .Landing .Panel #cover .options .option:hover {
+  background-color: rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+
+.App .Landing .Panel #cover .options .active-sort {
+  background-color: #008cfc;
+}
+
+.App .Landing .Panel .view-options {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.App .Landing .Panel .view-options .viewButton {
+  width: 38px;
+  border-radius: 50%;
+  margin: 0, 5px;
+}
+
+.App .Landing .UsersList {
+  background-color: var(--color-alt-canvas);
+  border-radius: 0 0 1rem 1rem;
+  padding: 1vmin 2vmin;
+}
+
+.App .Landing .UsersList .User {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding: 0;
+  background-color: var(--color-main-canvas);
+  border-radius: 1rem;
+  margin-top: 1rem;
+  border: 0.5vmin solid var(--color-alt-canvas);
+  -webkit-transition: width 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: width 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  /* Hide scrollbar for Chrome, Safari and Opera */
+}
+
+.App .Landing .UsersList .User .userImage,
+.App .Landing .UsersList .User .userInfo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+}
+
+.App .Landing .UsersList .User .userImage {
+  padding: 2vmin;
+}
+
+.App .Landing .UsersList .User .user-info,
+.App .Landing .UsersList .User .user-repos {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  color: var(--color-prime);
+  text-align: center;
+}
+
+.App .Landing .UsersList .User .user-info {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  height: 40%;
+}
+
+.App .Landing .UsersList .User .user-repos {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 60%;
+  overflow: scroll;
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.App .Landing .UsersList .User .user-repos::-webkit-scrollbar {
+  display: none;
+}
+
+.App .SearchResult {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100vw;
+  min-height: 90vh;
+  margin-top: 15vh;
+}
+
+.App .SearchResult .Profile {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: distribute;
+      align-content: space-around;
+  width: 100vw;
+  min-height: 90vh;
+  max-width: 1000px;
+}
+
+.App .SearchResult .Profile .user-main,
+.App .SearchResult .Profile .user-details {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+.App .SearchResult .Profile .user-main {
+  width: 30%;
+}
+
+.App .SearchResult .Profile .user-main .circle {
+  border-radius: 50%;
+  border: 5px solid var(--black);
+}
+
+.App .SearchResult .Profile .user-main .user-main-details {
+  margin: 0.25rem 0;
+}
+
+.App .SearchResult .Profile .user-main .user-link {
+  color: var(--color-link);
+  font-size: 2rem;
+}
+
+.App .SearchResult .Profile .user-details {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  margin-left: 1rem;
+  border-left: 2px solid var(--color-header);
+  width: 55%;
+}
+
+.App .SearchResult .Profile .user-details .alt-link {
+  font-size: 1.5rem;
+}
+
+.App .SearchResult .Profile .user-details .user-repositories,
+.App .SearchResult .Profile .user-details .user-organizations {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  padding: 0.5rem;
+}
+
+.App .SearchResult .Profile .user-details .user-repositories {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 25%;
+  width: 100%;
+}
+
+.App .SearchResult .Profile .user-details .user-organizations {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+}
+
+.App .SearchResult .Profile .user-details .user-organizations .organization {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 5px;
+  padding: 5px;
+  border: 2px solid #f9826c;
+  border-top: 0;
+  border-bottom: 0;
+  border-right: 0;
+}
+
+.App .SearchResult .NotFound {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 80%;
+  max-width: 1000px;
+  height: 80vh;
+}
+
+.App .SearchResult .NotFound .GoBack,
+.App .SearchResult .NotFound .error-info {
+  height: 100%;
+}
+
+.App .SearchResult .NotFound .GoBack {
+  width: 20%;
+  border-right: 2px solid var(--color-header);
+}
+
+.App .SearchResult .NotFound .error-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 80%;
+  text-align: center;
+}
+
+.GoBack {
+  text-align: left;
+  font-size: 3rem;
+  width: 10%;
+}
+
+.link {
+  color: var(--color-link);
+}
+
+.alt-link {
+  color: var(--color-alt-link);
+}
+
+.title {
+  margin: 0 0 1vmin 0;
+}
+
+.w100 {
+  width: 100%;
+}
+
+svg {
+  margin: 0 5px;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-link);
+}
+
+a:hover {
+  color: var(--color-prime) !important;
+}
+
+.border-radius {
+  border-radius: 1rem;
+}
+
+#cover {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+@media (min-width: 768px) {
+  .user-details {
+    min-height: 80vh;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .Navbar {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+        -ms-flex-flow: row-reverse;
+            flex-flow: row-reverse;
+  }
+  .Navbar #logo {
+    display: none !important;
+  }
+  .Landing {
+    width: 100% !important;
+  }
+  .GoBack {
+    width: 80% !important;
+    text-align: left;
+    margin: 0 3rem 1rem 3rem;
+    padding-bottom: 0.5rem;
+    font-size: 3rem;
+    border-bottom: 2px solid var(--color-header);
+  }
+  .Profile {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-flow: column wrap !important;
+            flex-flow: column wrap !important;
+    -webkit-box-pack: start !important;
+        -ms-flex-pack: start !important;
+            justify-content: flex-start !important;
+  }
+  .Profile .user-main {
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-flow: row wrap !important;
+            flex-flow: row wrap !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 20vh;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin: 1rem;
+  }
+  .Profile .user-main .flex-img {
+    width: 30% !important;
+  }
+  .Profile .user-main .user-main-info {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-flow: column-reverse wrap;
+            flex-flow: column-reverse wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    width: 60%;
+  }
+  .Profile .user-main .user-alt-info {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: column wrap;
+            flex-flow: column wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    width: 80%;
+    margin: 1rem;
+  }
+  .Profile .user-details {
+    width: 100% !important;
+    border: none !important;
+    -ms-flex-pack: distribute !important;
+        justify-content: space-around !important;
+    min-height: 60vh !important;
+  }
+  .SearchBar {
+    width: 75% !important;
+  }
+  .SearchBar .search-results {
+    left: -25vw !important;
+    padding: 0 1vmin;
+    border-left: none !important;
+    border-right: none !important;
+    border-bottom: 2px solid var(--color-prime) !important;
+    width: 100vw !important;
+  }
+  .NotFound {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: column wrap;
+            flex-flow: column wrap;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .NotFound .GoBack,
+  .NotFound .error-info {
+    width: 100%;
+    height: -webkit-fit-content !important;
+    height: -moz-fit-content !important;
+    height: fit-content !important;
+  }
+  .NotFound .GoBack {
+    border-right: none !important;
+  }
+}
+/*# sourceMappingURL=App.css.map */

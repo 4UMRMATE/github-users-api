@@ -1,0 +1,109 @@
+/* -------------------------------- 
+
+File#: _1_radio-switch
+Title: Radio Switch
+Descr: Custom radio toggle
+Usage: codyhouse.co/license
+
+-------------------------------- */
+:root {
+  --radio-switch-width: 4rem;
+  --radio-switch-height: 2rem;
+  --radio-switch-padding: 3px;
+  --radio-switch-radius: 50em;
+  --color-primary: #008cfc;
+  --color-white: hsl(0, 0%, 100%);
+  --color-contrast-lower: hsl(0, 0%, 95%);
+  --color-contrast-low: hsl(240, 1%, 83%);
+  --radio-switch-animation-duration: 0.3s;
+}
+
+.radio-switch {
+  position: relative;
+  display: inline-block;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  padding: var(--radio-switch-padding);
+  border-radius: calc(var(--radio-switch-radius) * 1.4);
+  background-color: var(--color-main-canvas);
+  border: 2px solid var(--color-prime);
+  color: var(--color-main-canvas);
+}
+
+.radio-switch:focus-within, .radio-switch:active {
+  -webkit-box-shadow: 0 0 0 2px var(--color-link);
+          box-shadow: 0 0 0 2px var(--color-link);
+}
+
+.radio-switch__item {
+  position: relative;
+  display: inline-block;
+  height: calc(var(--radio-switch-height) - 2 * var(--radio-switch-padding));
+  width: calc(var(--radio-switch-width) * 0.5 - var(--radio-switch-padding));
+}
+
+.radio-switch__label {
+  position: relative;
+  z-index: 2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: var(--radio-switch-radius);
+  cursor: pointer;
+  font-size: var(--text-sm);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-transition: all var(--radio-switch-animation-duration);
+  transition: all var(--radio-switch-animation-duration);
+}
+
+.radio-switch__label .radio-switch__item {
+  color: #fff;
+}
+
+.radio-switch__input:checked ~ .radio-switch__label {
+  color: var(--color-main-canvas);
+}
+
+.radio-switch__input:focus ~ .radio-switch__label {
+  background-color: var(--color-link);
+}
+
+.radio-switch__label :not(*):focus-within,
+.radio-switch__input:focus ~ .radio-switch__label {
+  background-color: transparent;
+}
+
+.radio-switch__marker {
+  display: block;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: -100%;
+  border-radius: var(--radio-switch-radius);
+  background-color: var(--color-primary);
+  height: calc(var(--radio-switch-height) - 2 * var(--radio-switch-padding));
+  width: calc(var(--radio-switch-width) * 0.5 - var(--radio-switch-padding));
+  -webkit-box-shadow: var(--shadow-md);
+          box-shadow: var(--shadow-md);
+  -webkit-transition: -webkit-transform var(--radio-switch-animation-duration);
+  transition: -webkit-transform var(--radio-switch-animation-duration);
+  transition: transform var(--radio-switch-animation-duration);
+  transition: transform var(--radio-switch-animation-duration), -webkit-transform var(--radio-switch-animation-duration);
+}
+
+.radio-switch__input:checked ~ .radio-switch__marker {
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+}
+/*# sourceMappingURL=switch.css.map */
