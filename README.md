@@ -2,7 +2,7 @@
 github-users-api
 ------
 
-# Live View: [Here](https://4umrmate.github.io/)
+# Live View: [Here](https://4umrmate.github.io/github-users-api)
 -----
 
 # Commands:
