@@ -309,6 +309,7 @@
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
+  /* Hide scrollbar for Chrome, Safari and Opera */
 }
 
 .App .Landing .Panel #cover .options {
@@ -334,6 +335,8 @@
   width: 100vw;
   height: 50vh;
   overflow: scroll;
+  scrollbar-width: none;
+  /* Firefox */
   background-color: var(--color-alt-canvas);
   color: var(--color-prime);
   border-radius: 1rem 1rem 0 0;
@@ -374,6 +377,10 @@
 
 .App .Landing .Panel #cover .options .active-sort {
   background-color: #008cfc;
+}
+
+.App .Landing .Panel #cover .options::-webkit-scrollbar {
+  display: none;
 }
 
 .App .Landing .Panel .view-options {
